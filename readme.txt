@@ -14,7 +14,7 @@ a notice to the user only the very first time that visits your website.
 
 Easy Cookie Law allows you to easily comply with the european cookie law, showing
 a notice to the user only the very first time that visits your website.
-Message, position and the style can be easyly modified through the plugin menu. 
+Message, position and the style can be easily modified through the plugin menu. 
 
 It helps you with SEO, since the plugin will not add any CSS stylesheet or Javascript file,
 what does not make your web site load more slowly. 
