@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Cookie Law
  * Description: Minimal code to make sure your website repect the coockie law
- * Version: 0.1
+ * Version: 0.1.1
  * Author: Antonio Sanchez
  * Author URI: http://antsanchez.com
  * Text Domain: easy-cookie-law
@@ -240,14 +240,18 @@ function ecl_print_styles(){
 
     global $empty_options;
     $opciones_saved = get_option("ecl_options", $empty_options);
-    $eclback = esc_attr($opciones_saved['ecl_noticecolor']);
-    $ecltext = esc_attr($opciones_saved['ecl_textcolor']);
-    $ecllink = esc_attr($opciones_saved['ecl_linkscolor']);
+    $eclcustom = esc_attr($opciones_saved['ecl_custom']);
 
-    if($opciones_saved['ecl_position'] == "top"){
-        echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; top: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
-    }else{
-        echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; bottom: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
+    if($eclcustom == 0){
+        $eclback = esc_attr($opciones_saved['ecl_noticecolor']);
+        $ecltext = esc_attr($opciones_saved['ecl_textcolor']);
+        $ecllink = esc_attr($opciones_saved['ecl_linkscolor']);
+        
+        if($opciones_saved['ecl_position'] == "top"){
+            echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; top: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
+        }else{
+            echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; bottom: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
+        }
     }
 
     ?>
