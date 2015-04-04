@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Cookie Law
  * Description: Minimal code to make sure your website repect the coockie law
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Antonio Sanchez
  * Author URI: http://antsanchez.com
  * Text Domain: easy-cookie-law
@@ -207,23 +207,64 @@ function ecl_options(){
 
 /**
 *
+* Function to check if the visitor is a Bot
+*
+*/
+function ecl_crawler_detect($USER_AGENT){
+	$bots_list = array(
+		'Google'=> 'Googlebot',
+		'Bing' => 'bingbot',
+		'Rambler'=>'Rambler',
+		'Yahoo'=> 'Slurp',
+		'AbachoBOT'=> 'AbachoBOT',
+		'accoona'=> 'Accoona',
+		'AcoiRobot'=> 'AcoiRobot',
+		'ASPSeek'=> 'ASPSeek',
+		'CrocCrawler'=> 'CrocCrawler',
+		'Dumbot'=> 'Dumbot',
+		'FAST-WebCrawler'=> 'FAST-WebCrawler',
+		'GeonaBot'=> 'GeonaBot',
+		'Gigabot'=> 'Gigabot',
+		'Lycos spider'=> 'Lycos',
+		'MSRBOT'=> 'MSRBOT',
+		'Altavista robot'=> 'Scooter',
+		'AltaVista robot'=> 'Altavista',
+		'ID-Search Bot'=> 'IDBot',
+		'eStyle Bot'=> 'eStyle',
+		'Scrubby robot'=> 'Scrubby',
+	);
+	
+    $regexp= '/'.  implode("|", $bots_list).'/';
+	if ( preg_match($regexp, $USER_AGENT)){
+		return true;
+		// It is a bot
+    }else{
+		return false;
+		// It is not
+	}
+}
+ 
+/**
+*
 * Creates cookie
 *
 */
 function ecl_cookie_test(){
 
-    $name = "easy-cookie-law";
-	session_start();
-	global $ecl_user;
-	if(isset($_COOKIE[$name])){
-		$ecl_user = $_COOKIE[$name];
-		if($ecl_user == 1){ 
-			setcookie($name, 3, time() + (86400 * 30), "/"); 
-			$ecl_user = 3;
+	if(!ecl_crawler_detect($_SERVER['HTTP_USER_AGENT'])){
+		$name = "easy-cookie-law";
+		session_start();
+		global $ecl_user;
+		if(isset($_COOKIE[$name])){
+			$ecl_user = $_COOKIE[$name];
+			if($ecl_user == 1){ 
+				setcookie($name, 3, time() + (86400 * 30), "/"); 
+				$ecl_user = 3;
+			}
+		}else{
+			setcookie($name, 1, time() + (86400 * 30));
+			$ecl_user = 1;
 		}
-	}else{
-		setcookie($name, 1, time() + (86400 * 30));
-        $ecl_user = 1;
 	}
 }
 add_action('get_header', 'ecl_cookie_test', 1);

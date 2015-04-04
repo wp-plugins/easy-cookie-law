@@ -3,7 +3,7 @@ Contributors: antsanchez
 Tags: cookies, cookie law
 Requires at least: 3.0.1
 Tested up to: 4.1.1
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ a notice to the user only the very first time that visits your website.
 
 Easy Cookie Law allows you to easily comply with the european cookie law, showing
 a notice to the user only the very first time that visits your website.
-Message, position and the style can be easily modified through the plugin menu. 
+Message, position and the style can be easyly modified through the plugin menu. 
 
 It helps you with SEO, since the plugin will not add any CSS stylesheet or Javascript file,
 what does not make your web site load more slowly. 
@@ -36,6 +36,8 @@ that the plugin self creates (it is just a session cookie, so it is not against 
 this cookie, a message will be shown (you can configure where, how and what will be show). If the users keeps surfing
 in your web, now or withing the next month, it means that he accepted the use of cookies in your website, so this message
 will not be shown again.
+
+If the visitor is a bot, like Google or Bing, the message won't be shown.
 
 = Why am I not seeing the message? =
 
