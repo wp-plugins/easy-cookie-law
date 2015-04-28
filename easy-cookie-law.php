@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Cookie Law
  * Description: Minimal code to make sure your website repect the coockie law
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: Antonio Sanchez
  * Author URI: http://antsanchez.com
  * Text Domain: easy-cookie-law
