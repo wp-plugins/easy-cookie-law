@@ -1,9 +1,9 @@
 === Easy Cookie Law ===
-Contributors: antsanchez 
+Contributors: antsanchez
 Tags: cookies, cookie law
 Requires at least: 3.0.1
-Tested up to: 4.2.1
-Stable tag: 0.1.3
+Tested up to: 4.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,12 +12,12 @@ a notice to the user only the very first time that visits your website.
 
 == Description ==
 
-Easy Cookie Law allows you to easily comply with the european cookie law, showing
+Easy Cookie Law allows you to easily comply with the European cookie law, showing
 a notice to the user only the very first time that visits your website.
-Message, position and the style can be easyly modified through the plugin menu. 
+Message, position and the style can be easily modified through the plugin menu.
 
 It helps you with SEO, since the plugin will not add any CSS stylesheet or Javascript file,
-what does not make your web site load more slowly. 
+what does not make your web site load more slowly.
 
 == Installation ==
 
@@ -54,6 +54,9 @@ If you think that the plugin is not working properly, just write me a line to an
 1. Easy Cookie Law Options Menu
 
 == Changelog ==
+
+= 1.4 =
+* Updated to WordPress v4.3
 
 = 1.3 =
 * Updated to WordPress v4.2.1

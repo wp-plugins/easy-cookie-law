@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Cookie Law
  * Description: Minimal code to make sure your website repect the coockie law
- * Version: 0.1.3
+ * Version: 1.4
  * Author: Antonio Sanchez
  * Author URI: http://antsanchez.com
  * Text Domain: easy-cookie-law
@@ -12,7 +12,7 @@
     Copyright 2014  Antonio Sanchez (email : antonio@antsanchez.com)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -127,7 +127,7 @@ function ecl_options(){
     <div class="wrap">
     <h1><?php echo __('Easy Cookie Law Menu Options', 'easy-cookie-law'); ?></h1>
         <form method="post">
-    
+
             <!-- Text -->
             <div class="caja">
             <div class="form-box">
@@ -191,7 +191,7 @@ function ecl_options(){
                 <input type="checkbox" name="eclcustom" id="eclcustom" value='1' <?php if($opciones_saved['ecl_custom'] == 1){ echo "checked";} ?> />
                 <?php echo __('Check this if you want to use your custom CSS written in any other stylesheet.<br>All your stlyes should be included within the id #ecl_notice, since it is the only css id that this plugin uses.', 'easy-cookie-law'); ?>
             </div>
-    
+
             <!-- Submit button -->
             <div class="caja">
             <div class="form-box">
@@ -233,17 +233,17 @@ function ecl_crawler_detect($USER_AGENT){
 		'eStyle Bot'=> 'eStyle',
 		'Scrubby robot'=> 'Scrubby',
 	);
-	
+
     $regexp= '/'.  implode("|", $bots_list).'/';
-	if ( preg_match($regexp, $USER_AGENT)){
-		return true;
-		// It is a bot
+	  if ( preg_match($regexp, $USER_AGENT)){
+  		return true;
+  		// It is a bot
     }else{
-		return false;
-		// It is not
+  		return false;
+  		// It is not
 	}
 }
- 
+
 /**
 *
 * Creates cookie
@@ -257,8 +257,8 @@ function ecl_cookie_test(){
 		global $ecl_user;
 		if(isset($_COOKIE[$name])){
 			$ecl_user = $_COOKIE[$name];
-			if($ecl_user == 1){ 
-				setcookie($name, 3, time() + (86400 * 30), "/"); 
+			if($ecl_user == 1){
+				setcookie($name, 3, time() + (86400 * 30), "/");
 				$ecl_user = 3;
 			}
 		}else{
@@ -271,7 +271,7 @@ add_action('get_header', 'ecl_cookie_test', 1);
 
 /**
 *
-* Print CSS and JavaScript needed
+* Print CSS and JavaScript if needed
 *
 */
 function ecl_print_styles(){
@@ -279,25 +279,25 @@ function ecl_print_styles(){
     global $ecl_user;
     if($ecl_user == 1){
 
-    global $empty_options;
-    $opciones_saved = get_option("ecl_options", $empty_options);
-    $eclcustom = esc_attr($opciones_saved['ecl_custom']);
+      global $empty_options;
+      $opciones_saved = get_option("ecl_options", $empty_options);
+      $eclcustom = esc_attr($opciones_saved['ecl_custom']);
 
-    if($eclcustom == 0){
-        $eclback = esc_attr($opciones_saved['ecl_noticecolor']);
-        $ecltext = esc_attr($opciones_saved['ecl_textcolor']);
-        $ecllink = esc_attr($opciones_saved['ecl_linkscolor']);
-        
-        if($opciones_saved['ecl_position'] == "top"){
-            echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; top: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
-        }else{
-            echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; bottom: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
-        }
-    }
+      if($eclcustom == 0){
+          $eclback = esc_attr($opciones_saved['ecl_noticecolor']);
+          $ecltext = esc_attr($opciones_saved['ecl_textcolor']);
+          $ecllink = esc_attr($opciones_saved['ecl_linkscolor']);
 
-    ?>
-    <script type="text/javascript">function ecl_close_div(){document.getElementById('ecl-notice').style.display = "none";}</script>
-    <?php
+          if($opciones_saved['ecl_position'] == "top"){
+              echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; top: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
+          }else{
+              echo "<style type='text/css'>#ecl-notice{position: fixed; z-index: 1000000; bottom: 0; left: 0; width: 100%; font-size: 14px; padding: 0.5em; background-color: $eclback; color: $ecltext;}#ecl-notice a{color:$ecllink;}</style>";
+          }
+      }
+
+      ?>
+      <script type="text/javascript">function ecl_close_div(){document.getElementById('ecl-notice').style.display = "none";}</script>
+      <?php
 
     }
 }
@@ -317,7 +317,7 @@ function ecl_notice(){
 
         global $empty_options;
         $opciones_saved = get_option("ecl_options", $empty_options);
-        
+
         $ecl_text = $opciones_saved['ecl_text'];
         $ecl_more_text = $opciones_saved['ecl_link_text'];
         $ecl_more_link = $opciones_saved['ecl_link'];
